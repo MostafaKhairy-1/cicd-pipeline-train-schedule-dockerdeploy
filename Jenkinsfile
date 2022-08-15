@@ -15,7 +15,7 @@ pipeline{
             steps {
             sh "docker build . -t mostafakhairy/my-repo  "
             withCredentials([usernamePassword(credentialsId: 'docker_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]){
-            sh "docker login -u ${env.USERNAME} -p ${env.USERPASS}"
+            sh "echo "$USERPASS" | docker login --username USERNAME --password-stdin "
             sh "docker push mostafakhairy/my-repo:latest "
             }
             }
