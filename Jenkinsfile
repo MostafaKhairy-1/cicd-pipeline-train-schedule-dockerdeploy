@@ -13,7 +13,7 @@ pipeline{
                 branch "master"
             }
             steps {
-            sh "docker build . -t mostafakhairy/my-repo \ "
+            sh "docker build . -t mostafakhairy/my-repo  "
             withCredentials([usernamePassword(credentialsId: 'docker_login', usernameVariable: 'USERNAME',passwordVariable: 'USERPASS')])
             sh "docker login -u ${USERNAME} -p ${USERPASS}"
             sh "docker push mostafakhairy/my-repo:latest "
